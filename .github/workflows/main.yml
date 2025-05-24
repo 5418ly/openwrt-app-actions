@@ -75,8 +75,9 @@ jobs:
 
       - name: Unpack SDK
         run: |
+          sudo apt install -y zstd # 确保 zstd 解压工具已安装，以防万一
           mkdir ~/openwrt-sdk
-          tar -xJ `pwd`/${SDK_NAME}.tar.zst --strip-components=1 -C ~/openwrt-sdk
+          tar -x --zstd -f `pwd`/${SDK_NAME}.tar.zst --strip-components=1 -C ~/openwrt-sdk
           ln -s ${HOME}/openwrt-sdk ${SDK_NAME}
 
       - name: Clean Code

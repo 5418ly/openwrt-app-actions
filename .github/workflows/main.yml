@@ -82,8 +82,8 @@ jobs:
 
       - name: Clean Code
         run: |
-          rm -f ${SDK_NAME}/package/package/kernel/linux/modules/* || true
-          grep -lFr '$(call KernelPackage,' ${SDK_NAME}/package/package/kernel/linux | xargs -rn1 sed -i 's/ FILES:=/ XFILES:=/g' || true
+          rm -f ${SDK_NAME}/package/kernel/linux/modules/* || true
+          grep -lFr '$(call KernelPackage,' ${SDK_NAME}/package/kernel/linux | xargs -rn1 sed -i 's/ FILES:=/ XFILES:=/g' || true
           find ${SDK_NAME}/target/linux -name 'modules.mk' | xargs -rn1 sed -i 's/ FILES:=/ XFILES:=/g' || true
           grep 'src-git base ' ${SDK_NAME}/feeds.conf.default > ${SDK_NAME}/feeds.conf
           grep 'src-git luci ' ${SDK_NAME}/feeds.conf.default >> ${SDK_NAME}/feeds.conf

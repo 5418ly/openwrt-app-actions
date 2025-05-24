@@ -8,7 +8,7 @@ on:
         required: true
         default: 'all'
       target:
-        description: 'build target ["arm64", "x64", "mipsel", "mvebu", "all"]' # <--- 这里添加 "mvebu"
+        description: 'build target ["arm64", "x64", "mipsel", "mvebu", "all"]'
         required: true
         default: 'all'
 env:
@@ -25,7 +25,7 @@ jobs:
           MATRIX_TARGET: ${{ github.event.inputs.target }}
         run: |
           if [ "x${MATRIX_TARGET}" = "x" -o "x${MATRIX_TARGET}" = "xall" ]; then \
-            echo "matrix={\"target\":[\"arm64\", \"x64\", \"mipsel\", \"mvebu\"]}" >> $GITHUB_OUTPUT; \ # <--- 这里添加 "mvebu"
+            echo "matrix={\"target\":[\"arm64\", \"x64\", \"mipsel\", \"mvebu\"]}" >> $GITHUB_OUTPUT; 
           else \
             targets=""; \
             for target in ${MATRIX_TARGET}; do \

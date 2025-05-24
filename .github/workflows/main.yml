@@ -88,6 +88,7 @@ jobs:
           find ${SDK_NAME}/target/linux -name 'modules.mk' | xargs -rn1 sed -i 's/ FILES:=/ XFILES:=/g' || true
           grep 'src-git base ' ${SDK_NAME}/feeds.conf.default > ${SDK_NAME}/feeds.conf
           grep 'src-git luci ' ${SDK_NAME}/feeds.conf.default >> ${SDK_NAME}/feeds.conf
+          grep 'src-git packages ' ${SDK_NAME}/feeds.conf.default >> ${SDK_NAME}/feeds.conf
 
       - name: Write Config
         run: |
